@@ -6,7 +6,7 @@
 using namespace std;
 static const int MAXN=100;//limit
 
-struct Information //´æ´¢ĞÅÏ¢ 
+struct Information //å­˜å‚¨ä¿¡æ¯ 
 {
 	char name[MAXN];
 }info[MAXN];
@@ -17,7 +17,7 @@ struct Information //´æ´¢ĞÅÏ¢
   bool occupy[MAXN];
   char line[MAXN];
   char filename[MAXN];
-  char namestr[MAXN]; //ÓÃÓÚÓÃ»§×Ô¼ºÊäÈëµÄÊı¾İ 
+  char namestr[MAXN]; //ç”¨äºç”¨æˆ·è‡ªå·±è¾“å…¥çš„æ•°æ® 
 
 int num,cnt,randnum;
 
@@ -32,24 +32,24 @@ inline void copyright()
 
 inline void input()
 {
- cout<<"Welcome OVO~\n\nÊäÈë1Îª¶ÁÈ¡ÎÄ¼ş(.txt), ÊäÈë2ÎªÊÖ¶¯ÊäÈëÈô¸ÉÃû×Ö.\n";
+ cout<<"Welcome OVO~\n\nè¾“å…¥1ä¸ºè¯»å–æ–‡ä»¶(.txt), è¾“å…¥2ä¸ºæ‰‹åŠ¨è¾“å…¥è‹¥å¹²åå­—.\n";
  cin>>temp;
  getchar();
  
- if(temp == 1) { //µ¼ÈëtxtÎÄ±¾ÎÄ¼ş 
+ if(temp == 1) { //å¯¼å…¥txtæ–‡æœ¬æ–‡ä»¶ 
  	
-	cout<<"ÇëÊäÈëÎÄ¼şÃû£º\n";
+	cout<<"è¯·è¾“å…¥æ–‡ä»¶åï¼š\n";
  	cin.getline(filename,MAXN);
- 	fp=fopen(filename,"r"); //¶ÁÈëÎÄ±¾ÎÄ¼ş
+ 	fp=fopen(filename,"r"); //è¯»å…¥æ–‡æœ¬æ–‡ä»¶
 	  
  if(fp==NULL) { 
-	cout<<"ÎŞ·¨´ò¿ªÎÄ¼ş£¡\n";
+	cout<<"æ— æ³•æ‰“å¼€æ–‡ä»¶ï¼\n";
 	exit(0);
   } 
   
-}else{ //ÊÖ¶¯ÊäÈëÃû×Ö 
+}else{ //æ‰‹åŠ¨è¾“å…¥åå­— 
 	
-  	cout<<"ÊäÈë¼¸¸öÃû×Ö(Ãû×Ö¼äÒÔ¿Õ¸ñ·Ö¸ô, ÒÔ-1½áÊø)£º\n";
+  	cout<<"è¾“å…¥å‡ ä¸ªåå­—(åå­—é—´ä»¥ç©ºæ ¼åˆ†éš”, ä»¥-1ç»“æŸ)ï¼š\n";
   	fp=fopen("Test111.txt","w+");
   	cin>>namestr;
   	while(namestr[0] != '-') {
@@ -57,7 +57,7 @@ inline void input()
   		fputc('\n',fp);
   		cin>>namestr;
   	}
-  	rewind(fp);//Ê¹ÎÄ¼şÎ»ÖÃ±ê¼Ç·µ»ØÎÄ¼ş¿ªÍ· 
+  	rewind(fp);//ä½¿æ–‡ä»¶ä½ç½®æ ‡è®°è¿”å›æ–‡ä»¶å¼€å¤´ 
   	
 }
  
@@ -68,19 +68,19 @@ inline void work()
 { 
 	
 	while(fgets(line,sizeof(line),fp)) if(line[0]!='\n'&&line[0]!=' ') sscanf(line,"%s\n",info[cnt++].name);//input information
- 	cout<<"°´ÏÂ¿Õ¸ñÉú³ÉÒ»¸öËæ»úÃû×Ö£¬°´ÆäËü¼üÔòÍË³ö³ÌĞò.\n";
+ 	cout<<"æŒ‰ä¸‹ç©ºæ ¼ç”Ÿæˆä¸€ä¸ªéšæœºåå­—ï¼ŒæŒ‰å…¶å®ƒé”®åˆ™é€€å‡ºç¨‹åº.\n";
   
- 	srand(time(0));//time(0)µÄ·µ»ØµÄÊÇ´Ó1970 UTC Jan 1 00:00µ½µ±Ç°Ê±¿ÌµÄÃëÊı£¬Îªunsigned intÀàĞÍ
- while((ch=getch())==' ') //ÊµÏÖËæ»ú¹¦ÄÜµÄºËĞÄ²¿·Ö! 
+ 	srand(time(0));//time(0)çš„è¿”å›çš„æ˜¯ä»1970 UTC Jan 1 00:00åˆ°å½“å‰æ—¶åˆ»çš„ç§’æ•°ï¼Œä¸ºunsigned intç±»å‹
+ while((ch=getch())==' ') //å®ç°éšæœºåŠŸèƒ½çš„æ ¸å¿ƒéƒ¨åˆ†! 
  {
 
-  int randnum=rand()%cnt; //²úÉúËæ»úÊırandnum 
+  int randnum=rand()%cnt; //äº§ç”Ÿéšæœºæ•°randnum 
   
-  while(occupy[randnum]) randnum=rand()%cnt; //ÊµÏÖ·ÀÖ¹ÖØ¸´³éÈ¡¹¦ÄÜ 
+  while(occupy[randnum]) randnum=rand()%cnt; //å®ç°é˜²æ­¢é‡å¤æŠ½å–åŠŸèƒ½ 
   occupy[randnum]=true;
   
   printf("%s\n",info[randnum].name);
-  system("pause");//´Ó³ÌĞòÀïµ÷ÓÃ¡°pause¡±ÃüÁî¡£
+  system("pause");//ä»ç¨‹åºé‡Œè°ƒç”¨â€œpauseâ€å‘½ä»¤ã€‚
     
   if(++num==cnt)
   {
@@ -95,9 +95,9 @@ inline void work()
 
 int main()
 {
- copyright();//Production instructions  ÖÆ×÷ËµÃ÷Ä£¿é 
- input();//Input module ÊäÈëÄ£¿é 
- work();//Core work points ºËĞÄ¹¤×÷µãÄ£¿é 
- fclose(fp);//¹Ø±ÕÊı¾İÎÄ¼ş 
+ copyright();//Production instructions  åˆ¶ä½œè¯´æ˜æ¨¡å— 
+ input();//Input module è¾“å…¥æ¨¡å— 
+ work();//Core work points æ ¸å¿ƒå·¥ä½œç‚¹æ¨¡å— 
+ fclose(fp);//å…³é—­æ•°æ®æ–‡ä»¶ 
  return 0;
 }
